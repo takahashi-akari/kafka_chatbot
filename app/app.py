@@ -57,13 +57,6 @@ def kafka_message(message):
     )
     print("Consumer created")
 
-    # message count
-    message_count = 0
-    for message in consumer:
-        message_count += 1
-
-    i = 0
-    # end message
     for message in consumer:
         parsed = json.loads(message.value.decode("utf-8"))
         print(parsed)
