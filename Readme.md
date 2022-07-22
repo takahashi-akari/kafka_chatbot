@@ -58,7 +58,7 @@ services:
 - [Zookeeper](https://zookeeper.apache.org/)
 - [Docker](https://www.docker.com/)
 - [Docker-compose](https://docs.docker.com/compose/install/)
-- [Takahashi Akari - github.io](https://takahashi-akari.github.io/)
+- [Takahashi Akari - github.io](https://github.com/takahashi-akari)
 
 # License:
 MIT License Copyright (c) 2022 [Takahashi Akari](https://github.com/takahashi-akari)
