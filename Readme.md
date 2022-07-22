@@ -12,7 +12,8 @@ URL: [https://kafkabot.akari.mn](https://kafkabot.akari.mn)
 
 # Docker-compose:
 ```yaml
-version: '2'
+# @license: MIT License Copyright (c) 2020 Takahashi Akari <akaritakahashioss@gmail.com>
+version: '3'
 
 services:
   kafka:
@@ -50,7 +51,6 @@ services:
     environment: 
       TRANSACTIONS_TOPIC: test
       KAFKA_BROKER_URL: kafka:9092
-    mem_limit: 4g
 
 ```
 # Links
