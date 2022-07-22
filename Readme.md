@@ -8,7 +8,7 @@ docker-compose up -d
 ```
 
 # Demo
-URL: (https://kafkabot.akari.mn)[https://kafkabot.akari.mn]
+URL: [https://kafkabot.akari.mn](https://kafkabot.akari.mn)
 
 # Docker-compose:
 ```yaml
