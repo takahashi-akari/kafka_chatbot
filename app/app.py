@@ -2,7 +2,7 @@
 @title app.py
 @author: Takahashi Akari <akaritakahashioss@gmail.com>
 @date: 2022/07/23
-@version: 1.0.1
+@version: 1.0.2
 @description: This application is a chatbot that uses Kafka as a message broker.
 @license: MIT License Copyright (c) 2020 Takahashi Akari <akaritakahashioss@gmail.com>
 '''
@@ -12,7 +12,7 @@ from sys import api_version
 from flask import Flask, render_template
 from flask_cors import CORS, cross_origin
 from flask_socketio import SocketIO, emit
-from kafka import KafkaProducer, KafkaConsumer
+from kafka import KafkaProducer, KafkaConsumer, TopicPartition
 import os
 import json
 
@@ -57,22 +57,29 @@ def kafka_message(message):
     )
     print("Consumer created")
 
+    # earliest position in the topic
+    partitions = consumer.partitions_for_topic(TOPIC_NAME)
+    # latest partition - 1
+    partition = max(partitions)
+    offset = consumer.end_offsets([TopicPartition(TOPIC_NAME, partition)])[TopicPartition(TOPIC_NAME, partition)] - 1
+    print("Offset: ", offset)
+
     for message in consumer:
-        parsed = json.loads(message.value.decode("utf-8"))
-        print(parsed)
-        msg = parsed["message"]
-        print(msg)
-        chatbot_message = chatbot(msg)
-        print(chatbot_message)
-        response = {"message": chatbot_message}
-        emit("kafka_message", response, broadcast=True)
-        print("Message sent to client")
-        consumer.commit()
-        print("Committed")
-        break
+        if message.offset == offset:
+            parsed = json.loads(message.value.decode("utf-8"))
+            print(parsed)
+            msg = parsed["message"]
+            print(msg)
+            chatbot_message = chatbot(msg)
+            print(chatbot_message)
+            response = {"message": chatbot_message}
+            emit("kafka_message", response, broadcast=True)
+            print("Message sent to client")
+            consumer.commit()
+            consumer.close()
+            print("Committed")
+            break
 
-
-        
 if __name__ == "__main__":
     from model import chatbot  
     socketio.run(app, host="0.0.0.0", port=80, debug=False, certfile='cert.pem', keyfile='key.pem')
