@@ -2,7 +2,7 @@
 @title app.py
 @author: Takahashi Akari <akaritakahashioss@gmail.com>
 @date: 2022/07/23
-@version: 1.0.2
+@version: 1.0.3
 @description: This application is a chatbot that uses Kafka as a message broker.
 @license: MIT License Copyright (c) 2020 Takahashi Akari <akaritakahashioss@gmail.com>
 '''
@@ -75,7 +75,6 @@ def kafka_message(message):
             response = {"message": chatbot_message}
             emit("kafka_message", response, broadcast=True)
             print("Message sent to client")
-            consumer.commit()
             consumer.close()
             print("Committed")
             break
