@@ -56,6 +56,8 @@ def kafka_message(message):
         response = {"message": chatbot_message}
         emit("kafka_message", response, broadcast=True)
         print("Message sent to client")
+        # delete message from kafka
+        consumer.commit()
         
 if __name__ == "__main__":
     from model import chatbot  
