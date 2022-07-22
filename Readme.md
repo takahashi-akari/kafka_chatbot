@@ -7,6 +7,9 @@ docker-compose build
 docker-compose up -d
 ```
 
+# Demo
+URL: (https://kafkabot.akari.mn)[https://kafkabot.akari.mn]
+
 # Docker-compose:
 ```yaml
 version: '2'
