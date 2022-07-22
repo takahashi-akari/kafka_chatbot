@@ -43,7 +43,7 @@ def kafka_message(message):
     producer.flush()
     print("Message sent to Kafka")
     consumer = KafkaConsumer(
-        TOPIC_NAME, bootstrap_servers=BOOTSTRAP_SERVERS, auto_offset_reset="earliest"
+        TOPIC_NAME, bootstrap_servers=BOOTSTRAP_SERVERS, auto_offset_reset="earliest", group_id="test-consumer-group"
     )
     print("Consumer created")
     for message in consumer:
