@@ -37,3 +37,4 @@ services:
       TRANSACTIONS_TOPIC: test
       KAFKA_BROKER_URL: kafka:9092
     mem_limit: 4g
+
