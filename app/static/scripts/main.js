@@ -1,3 +1,11 @@
+/*
+@title main.js
+@author: Takahashi Akari <akaritakahashioss@gmail.com>
+@date: 2022/07/23
+@version: 1.0.0
+@description: This application is a chatbot that uses Kafka as a message broker.
+@license: MIT License Copyright (c) 2020 Takahashi Akari <akaritakahashioss@gmail.com>
+*/
 (function() {
     var Message, url;
     Message = function(arg) {

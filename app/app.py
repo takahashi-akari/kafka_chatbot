@@ -1,8 +1,17 @@
+'''
+@title app.py
+@author: Takahashi Akari <akaritakahashioss@gmail.com>
+@date: 2022/07/23
+@version: 1.0.0
+@description: This application is a chatbot that uses Kafka as a message broker.
+@license: MIT License Copyright (c) 2020 Takahashi Akari <akaritakahashioss@gmail.com>
+'''
+
 from email import message
 from flask import Flask, render_template
 from flask_cors import CORS, cross_origin
 from flask_socketio import SocketIO, emit
-from kafka import KafkaProducer, KafkaConsumer, TopicPartition
+from kafka import KafkaProducer, KafkaConsumer
 import os
 import json
 
@@ -43,7 +52,7 @@ def kafka_message(message):
     producer.flush()
     print("Message sent to Kafka")
     consumer = KafkaConsumer(
-        TOPIC_NAME, bootstrap_servers=BOOTSTRAP_SERVERS, auto_offset_reset="earliest", group_id="test-consumer-group", auto_commit_enable=False, auto_commit_interval_ms=1000, value_deserializer=lambda m: json.loads(m.decode("utf-8"))
+        TOPIC_NAME, bootstrap_servers=BOOTSTRAP_SERVERS, auto_offset_reset="earliest", group_id="test-consumer-group", enable_auto_commit_enable=False
     )
     print("Consumer created")
 
@@ -55,20 +64,18 @@ def kafka_message(message):
     i = 0
     # end message
     for message in consumer:
-        i += 1
-        if i == message_count:
-            parsed = json.loads(message.value.decode("utf-8"))
-            print(parsed)
-            msg = parsed["message"]
-            print(msg)
-            chatbot_message = chatbot(msg)
-            print(chatbot_message)
-            response = {"message": chatbot_message}
-            emit("kafka_message", response, broadcast=True)
-            print("Message sent to client")
-            consumer.commit()
-            print("Committed")
-            break
+        parsed = json.loads(message.value.decode("utf-8"))
+        print(parsed)
+        msg = parsed["message"]
+        print(msg)
+        chatbot_message = chatbot(msg)
+        print(chatbot_message)
+        response = {"message": chatbot_message}
+        emit("kafka_message", response, broadcast=True)
+        print("Message sent to client")
+        consumer.commit()
+        print("Committed")
+        break
 
 
         
