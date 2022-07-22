@@ -23,6 +23,10 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
     image: wurstmeister/kafka
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
     ports:
       - "9092:9092"
     volumes:
@@ -35,6 +39,10 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
     image: wurstmeister/zookeeper
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
     ports:
       - "2181:2181"
       - "2888:2888"
@@ -43,6 +51,10 @@ services:
 
   app:
     build: ./app
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
     ports:
      - "3306:80"
     depends_on:

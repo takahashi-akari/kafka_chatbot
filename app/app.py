@@ -2,12 +2,13 @@
 @title app.py
 @author: Takahashi Akari <akaritakahashioss@gmail.com>
 @date: 2022/07/23
-@version: 1.0.0
+@version: 1.0.1
 @description: This application is a chatbot that uses Kafka as a message broker.
 @license: MIT License Copyright (c) 2020 Takahashi Akari <akaritakahashioss@gmail.com>
 '''
 
 from email import message
+from sys import api_version
 from flask import Flask, render_template
 from flask_cors import CORS, cross_origin
 from flask_socketio import SocketIO, emit
@@ -47,12 +48,12 @@ def test_connect():
 def kafka_message(message):
     # kafka producer sends messages
     print(message)
-    producer = KafkaProducer(bootstrap_servers=BOOTSTRAP_SERVERS)
+    producer = KafkaProducer(bootstrap_servers=BOOTSTRAP_SERVERS, api_version=(0, 11, 5))
     producer.send(TOPIC_NAME, json.dumps(message).encode("utf-8"))
     producer.flush()
     print("Message sent to Kafka")
     consumer = KafkaConsumer(
-        TOPIC_NAME, bootstrap_servers=BOOTSTRAP_SERVERS, auto_offset_reset="earliest", group_id="test-consumer-group", enable_auto_commit_enable=False
+        TOPIC_NAME, bootstrap_servers=BOOTSTRAP_SERVERS, auto_offset_reset="earliest", group_id="test-consumer-group", enable_commit_enable=False
     )
     print("Consumer created")
 
