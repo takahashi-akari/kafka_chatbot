@@ -1,4 +1,4 @@
-# Chatbot with Kafka: 
+# Kafka Chatbot
 This application is a chatbot that uses Kafka as a message broker.
 
 # Usage:
@@ -70,7 +70,7 @@ services:
 - [Zookeeper](https://zookeeper.apache.org/)
 - [Docker](https://www.docker.com/)
 - [Docker-compose](https://docs.docker.com/compose/install/)
-- [Takahashi Akari - github.io](https://github.com/takahashi-akari)
+- [Takahashi Akari - GitHub](https://github.com/takahashi-akari/kafka_chatbot)
 
 # License:
 MIT License Copyright (c) 2022 [Takahashi Akari](https://github.com/takahashi-akari)
