@@ -12,7 +12,7 @@ URL: [https://kafkabot.akari.mn](https://kafkabot.akari.mn)
 
 # Docker-compose:
 ```yaml
-# @license: MIT License Copyright (c) 2020 Takahashi Akari <akaritakahashioss@gmail.com>
+# @license: MIT License Copyright (c) 2022 Takahashi Akari <akaritakahashioss@gmail.com>
 version: '3'
 
 services:

@@ -1,9 +1,9 @@
 # @title model.py
 # @author: Takahashi Akari <akaritakahashioss@gmail.com>
 # @date: 2022/07/23
-# @version: 1.0.4
+# @version: 1.0.5
 # @description: This application is a chatbot that uses Kafka as a message broker.
-# @license: MIT License Copyright (c) 2020 Takahashi Akari <akaritakahashioss@gmail.com>
+# @license: MIT License Copyright (c) 2022 Takahashi Akari <akaritakahashioss@gmail.com>
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
@@ -16,6 +16,8 @@ chat_history_ids = None
 
 def chatbot(msg):
     global chat_history_ids
+    # TODO: add chat history
+    chat_history_ids = None
     # encode the new user input, add the eos_token and return a tensor in Pytorch
     new_user_input_ids = tokenizer.encode(
         msg + tokenizer.eos_token, return_tensors="pt"
