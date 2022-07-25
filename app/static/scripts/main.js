@@ -2,7 +2,7 @@
 @title main.js
 @author: Takahashi Akari <akaritakahashioss@gmail.com>
 @date: 2022/07/23
-@version: 1.0.6
+@version: 1.1.0
 @description: This application is a chatbot that uses Kafka as a message broker.
 @license: MIT License Copyright (c) 2022 Takahashi Akari <akaritakahashioss@gmail.com>
 */
@@ -94,7 +94,7 @@
             }
         });
         var message_greetings = new Message({
-            text: 'Hi, I am KafkaBot. How can I help you?',
+            text: "Hello, I'm KafkaBot. How can I help you?",
             message_side: 'left'
         });
         message_greetings.draw();

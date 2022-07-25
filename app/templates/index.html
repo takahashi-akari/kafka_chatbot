@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Apache Kafka chatbot</title>
+    <title>Apache Kafka Chatbot</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
     <script src="/static/scripts/main.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <!-- Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link rel="stylesheet" type="text/css" href="/static/styles/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   </head>
 <!------
 @title index.html
 @author: Takahashi Akari <akaritakahashioss@gmail.com>
 @date: 2022/07/23
-@version: 1.0.6
+@version: 1.1.0
 @description: This application is a chatbot that uses Kafka as a message broker.
 @license: MIT License Copyright (c) 2022 Takahashi Akari <akaritakahashioss@gmail.com>    
 ---------->
@@ -25,20 +29,35 @@
     <div class="chat_window">
         <div class="top_menu">
             <div class="buttons">
-                <div class="button close"></div>
-                <div class="button minimize"></div>
-                <div class="button maximize"></div>
+                <div class="button close">
+                    <div class="icon">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="button minimize">
+                    <div class="icon">
+                        <i class="fas fa-minus"></i>
+                    </div>
+                </div>
+                <div class="button maximize">
+                    <div class="icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
             </div>
-            <div class="title">Chat</div>
+            <div class="title">Apache Kafka Chatbot</div>
         </div>
         <ul class="messages"></ul>
         <div class="bottom_wrapper clearfix">
             <div class="message_input_wrapper">
-                <input class="message_input" placeholder="Insert your message here..." />
+                <input class="message_input" placeholder="Type message here..." />
             </div>
             <div class="send_message">
                 <div class="icon"></div>
-                <div class="text">Send</div>
+                <div class="text">
+                    <!-- Fontawesome Letter -->
+                    <i class="fas fa-paper-plane"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -51,6 +70,10 @@
         </li>
     </div>
     <footer>
-        <div style="font-size: 3em; text-align: center;"><a href="https://takahashi-akari.github.io/kafka_chatbot/">GitHub</a></div>
+        <div class="footer_content">
+            <p>Copyright © 2022 Takahashi Akari</p>
+            <p class="github"><a href="https://takahashi-akari.github.io/kafka_chatbot/">GitHub</a></p>
+        </div>
     </footer>
 </body>
+</html> 
